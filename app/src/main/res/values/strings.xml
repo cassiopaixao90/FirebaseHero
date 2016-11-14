@@ -5,4 +5,13 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- Value of SubscribeActivity -->
+    <string name="subscription_message">Click the SUBSCRIBE TO NEWS button below to subscribe to the
+        news topic. Messages sent to the news topic will be received. The LOG TOKEN button logs the
+        InstanceID token to logcat. You can use token to send notifications to a single device.</string>
+    <string name="subscribe_to_news_btn">SUBSCRIBE TO NEWS</string>
+    <string name="log_token_btn">LOG TOKEN</string>
+    <!-- Value of SubscribeActivity -->
+
 </resources>

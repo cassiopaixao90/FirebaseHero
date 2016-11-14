@@ -115,8 +115,8 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.subscribe) {
+            startActivity(new Intent(this, SubscribeActivity.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
@@ -141,31 +141,39 @@ public class MainActivity extends AppCompatActivity
                 switch (which) {
                     case 0:
                         Toast.makeText(getApplicationContext(), "Thanks for the feedback!", Toast.LENGTH_LONG).show();
-                        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, String.valueOf(which));
+                        bundle.putInt(FirebaseAnalytics.Param.ITEM_ID, which);
                         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Yes");
                         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "text");
                         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+                        //Sets a user property to a given value.
+                        mFirebaseAnalytics.setUserProperty("feedback", "Yes");
                         break;
                     case 1:
                         Toast.makeText(getApplicationContext(), "Thanks for the feedback!", Toast.LENGTH_LONG).show();
-                        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, String.valueOf(which));
+                        bundle.putInt(FirebaseAnalytics.Param.ITEM_ID, which);
                         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "No");
                         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "text");
                         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+                        //Sets a user property to a given value.
+                        mFirebaseAnalytics.setUserProperty("feedback", "No");
                         break;
                     case 2:
                         Toast.makeText(getApplicationContext(), "Thanks for the feedback!", Toast.LENGTH_LONG).show();
-                        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, String.valueOf(which));
+                        bundle.putInt(FirebaseAnalytics.Param.ITEM_ID, which);
                         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Need Improvements");
                         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "text");
                         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+                        //Sets a user property to a given value.
+                        mFirebaseAnalytics.setUserProperty("feedback", "Need Improvements");
                         break;
                     case 3:
                         Toast.makeText(getApplicationContext(), "Thanks for the feedback!", Toast.LENGTH_LONG).show();
-                        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, String.valueOf(which));
+                        bundle.putInt(FirebaseAnalytics.Param.ITEM_ID, which);
                         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Rate the app");
                         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "text");
                         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+                        //Sets a user property to a given value.
+                        mFirebaseAnalytics.setUserProperty("feedback", "Rate the app");
 
                         // To start play store
                         final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
@@ -195,11 +203,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setAppFirstOpenValue(int number){
+        // writes to the sharedpreference
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt("first_open", number);
         editor.commit();
     }
-
 
 }
